@@ -21,6 +21,8 @@
     "@react-navigation/drawer": "^7.3.9",
     "@react-navigation/elements": "^2.8.1",
     "better-auth": "catalog:",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
     "dotenv": "catalog:",
     "expo": "^54.0.23",
     "expo-constants": "~18.0.10",
@@ -46,6 +48,7 @@
     "tailwind-merge": "^3.4.0",
     "tailwind-variants": "^3.2.2",
     "tailwindcss": "^4.1.18",
+    "tailwindcss-animate": "^1.0.7",
     "uniwind": "^1.2.2",
     "zod": "catalog:"
   },
