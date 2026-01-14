@@ -5,9 +5,13 @@
 │   ├── _layout.tsx         # Root layout (providers, gesture handler)
 │   ├── +not-found.tsx      # 404 screen
 │   ├── modal.tsx           # Modal screen (presentation: modal)
+│   ├── (auth)/             # Authentication group
+│   │   ├── _layout.tsx     # Auth layout config
+│   │   ├── login.tsx       # Login screen
+│   │   └── signup.tsx      # Sign up screen
 │   └── (drawer)/           # Drawer navigation group
 │       ├── _layout.tsx     # Drawer layout config
-│       ├── index.tsx       # Home screen (auth UI)
+│       ├── index.tsx       # Home screen
 │       └── (tabs)/         # Tab navigation group (nested in drawer)
 │           ├── _layout.tsx # Tab layout config
 │           ├── index.tsx   # Tab one
@@ -16,6 +20,9 @@
 ├── contexts/               # React context providers
 ├── lib/                    # Utilities and client configs
 ├── assets/images/          # Static images and icons
+├── docs/                   # Documentation
+│   ├── auth-screens.md     # Auth screens documentation
+│   └── expo-routing-guide.md
 ├── global.css              # Tailwind CSS entry point
 └── .env                    # Environment variables
 ```
@@ -24,21 +31,23 @@
 
 ### Routing
 
-- Route groups use parentheses: `(drawer)`, `(tabs)`
+- Route groups use parentheses: `(auth)`, `(drawer)`, `(tabs)`
 - Layout files: `_layout.tsx` in each route directory
-- Screen files: `index.tsx` or named files like `two.tsx`
+- Screen files: `index.tsx` or named files like `login.tsx`, `two.tsx`
 
 ### Components
 
 - Functional components with named exports
 - Use `Container` component for screen wrappers (handles safe area + scroll)
 - HeroUI Native components for UI elements (Button, Card, Surface, TextField)
+- Custom styling for auth screens to match Figma design
 
 ### Styling
 
 - Tailwind classes via `className` prop (enabled by Uniwind)
 - Use `cn()` from heroui-native for conditional class merging
 - Theme colors accessed via `useThemeColor()` hook
+- Custom hex colors for brand-specific screens (auth)
 
 ### Path Aliases
 
