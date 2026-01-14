@@ -1,0 +1,17 @@
+{
+  "expo": {
+    "scheme": "outfit-planner",
+    "userInterfaceStyle": "automatic",
+    "orientation": "default",
+    "web": {
+      "bundler": "metro"
+    },
+    "name": "outfit-planner",
+    "slug": "outfit-planner",
+    "plugins": ["expo-font"],
+    "experiments": {
+      "typedRoutes": true,
+      "reactCompiler": true
+    }
+  }
+}

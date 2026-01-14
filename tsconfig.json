@@ -1,0 +1,3 @@
+{
+  "extends": "@outfit-planner/config/tsconfig.base.json"
+}
