@@ -1,25 +1,23 @@
 # outfit-planner
 
-This project was created with [Better-T-Stack](https://github.com/AmanVarshney01/create-better-t-stack), a modern TypeScript stack that combines Hono, and more.
+A cross-platform outfit planning application built with [Better-T-Stack](https://github.com/AmanVarshney01/create-better-t-stack).
 
 ## Features
 
-- **TypeScript** - For type safety and improved developer experience
-- **React Native** - Build mobile apps using React
-- **Expo** - Tools for React Native development
-- **TailwindCSS** - Utility-first CSS for rapid UI development
-- **shadcn/ui** - Reusable UI components
-- **Hono** - Lightweight, performant server framework
-- **Node.js** - Runtime environment
-- **Drizzle** - TypeScript-first ORM
-- **PostgreSQL** - Database engine
-- **Authentication** - Better-Auth
-- **Oxlint** - Oxlint + Oxfmt (linting & formatting)
-- **Turborepo** - Optimized monorepo build system
+- **TypeScript** - Type safety throughout
+- **React Native + Expo** - Mobile app development
+- **HeroUI Native** - Component library
+- **TailwindCSS** - Utility-first styling via uniwind
+- **Hono** - Lightweight backend framework
+- **Drizzle ORM** - Type-safe database queries
+- **PostgreSQL** - Database (Neon serverless)
+- **Better Auth** - Authentication with Expo support
+- **Oxlint + Oxfmt** - Linting and formatting
+- **Turborepo** - Monorepo build system
 
 ## Getting Started
 
-First, install the dependencies:
+Install dependencies:
 
 ```bash
 pnpm install
@@ -27,53 +25,48 @@ pnpm install
 
 ## Database Setup
 
-This project uses PostgreSQL with Drizzle ORM.
-
-1. Make sure you have a PostgreSQL database set up.
-2. Update your `apps/server/.env` file with your PostgreSQL connection details.
-
-3. Apply the schema to your database:
+1. Set up a PostgreSQL database (Neon recommended)
+2. Update `apps/server/.env` with your connection details
+3. Push the schema:
 
 ```bash
-pnpm run db:push
+pnpm db:push
 ```
 
-Then, run the development server:
+## Development
 
 ```bash
-pnpm run dev
+pnpm dev          # Start all apps
+pnpm dev:native   # Start Expo dev server only
+pnpm dev:server   # Start API server only
 ```
 
-Open [http://localhost:3001](http://localhost:3001) in your browser to see the web application.
-Use the Expo Go app to run the mobile application.
-The API is running at [http://localhost:3000](http://localhost:3000).
-
-## Git Hooks and Formatting
-
-- Format and lint fix: `pnpm run check`
+- API runs at [http://localhost:3000](http://localhost:3000)
+- Use Expo Go app for mobile development
 
 ## Project Structure
 
 ```
 outfit-planner/
 ├── apps/
-│   ├── web/         # Frontend application ()
-│   ├── native/      # Mobile application (React Native, Expo)
-│   └── server/      # Backend API (Hono)
+│   ├── native/      # React Native + Expo mobile app
+│   └── server/      # Hono API server
 ├── packages/
-│   ├── api/         # API layer / business logic
-│   ├── auth/        # Authentication configuration & logic
-│   └── db/          # Database schema & queries
+│   ├── auth/        # Better Auth configuration
+│   ├── config/      # Shared TypeScript config
+│   ├── db/          # Drizzle ORM schema & queries
+│   └── env/         # Environment variable validation
 ```
 
-## Available Scripts
+## Scripts
 
-- `pnpm run dev`: Start all applications in development mode
-- `pnpm run build`: Build all applications
-- `pnpm run dev:web`: Start only the web application
-- `pnpm run dev:server`: Start only the server
-- `pnpm run check-types`: Check TypeScript types across all apps
-- `pnpm run dev:native`: Start the React Native/Expo development server
-- `pnpm run db:push`: Push schema changes to database
-- `pnpm run db:studio`: Open database studio UI
-- `pnpm run check`: Run Oxlint and Oxfmt
+```bash
+pnpm dev              # Start all apps
+pnpm build            # Build all packages
+pnpm check-types      # TypeScript type checking
+pnpm check            # Run Oxlint and Oxfmt
+pnpm db:push          # Push schema to database
+pnpm db:generate      # Generate migrations
+pnpm db:migrate       # Run migrations
+pnpm db:studio        # Open Drizzle Studio
+```
