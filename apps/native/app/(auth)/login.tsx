@@ -1,14 +1,18 @@
 import { Ionicons } from "@expo/vector-icons";
 import { router } from "expo-router";
-import { Button, ErrorView, Spinner, TextField } from "heroui-native";
+import { ErrorView, Spinner, TextField } from "heroui-native";
 import { useState } from "react";
 import { Pressable, Text, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { withUniwind } from "uniwind";
 
 import { authClient } from "@/lib/auth-client";
+import React from "react";
 
 const StyledIonicons = withUniwind(Ionicons);
+const StyledView = withUniwind(View);
+const StyledText = withUniwind(Text);
+const StyledPressable = withUniwind(Pressable);
 
 export default function LoginScreen() {
   const insets = useSafeAreaInsets();
@@ -50,10 +54,10 @@ export default function LoginScreen() {
   }
 
   return (
-    <View className="flex-1 bg-white" style={{ paddingTop: insets.top }}>
+    <StyledView className="flex-1 bg-white" style={{ paddingTop: insets.top }}>
       {/* Header with Back Button */}
-      <View className="px-6 pt-4 pb-8">
-        <Pressable
+      <StyledView className="px-6 pt-4 pb-8">
+        <StyledPressable
           onPress={() => router.back()}
           className="w-12 h-12 rounded-full bg-gray-100 items-center justify-center active:opacity-70"
         >
@@ -62,16 +66,16 @@ export default function LoginScreen() {
             size={24}
             className="text-gray-800"
           />
-        </Pressable>
-      </View>
+        </StyledPressable>
+      </StyledView>
 
       {/* Content */}
-      <View className="flex-1 px-6">
+      <StyledView className="flex-1 px-6">
         {/* Title */}
-        <View className="mb-8">
-          <Text className="text-4xl font-bold text-gray-800 mb-1">Sign In</Text>
-          <Text className="text-base text-gray-500">Welcome Back!</Text>
-        </View>
+        <StyledView className="mb-8">
+          <StyledText className="text-4xl font-bold text-gray-800 mb-1">Sign In</StyledText>
+          <StyledText className="text-base text-gray-500">Welcome Back!</StyledText>
+        </StyledView>
 
         {/* Error Message */}
         {error && (
@@ -81,7 +85,7 @@ export default function LoginScreen() {
         )}
 
         {/* Form Fields */}
-        <View className="gap-4 mb-6">
+        <StyledView className="gap-4 mb-6">
           <TextField>
             <TextField.Input
               value={email}
@@ -102,17 +106,17 @@ export default function LoginScreen() {
               className="bg-white border border-gray-300 rounded-xl px-4 py-4 text-base"
             />
           </TextField>
-        </View>
+        </StyledView>
 
         {/* Forgot Password Link */}
-        <View className="items-end mb-6">
-          <Pressable onPress={() => {}} className="active:opacity-70">
-            <Text className="text-[#4A9EFF] text-sm">Forgot Password?</Text>
-          </Pressable>
-        </View>
+        <StyledView className="items-end mb-6">
+          <StyledPressable onPress={() => {}} className="active:opacity-70">
+            <StyledText className="text-[#4A9EFF] text-sm">Forgot Password?</StyledText>
+          </StyledPressable>
+        </StyledView>
 
         {/* Sign In Button */}
-        <Pressable
+        <StyledPressable
           onPress={handleLogin}
           disabled={isLoading}
           className="bg-[#6B7C6E] rounded-xl py-4 items-center justify-center mb-6 active:opacity-80"
@@ -121,24 +125,24 @@ export default function LoginScreen() {
           {isLoading ? (
             <Spinner size="sm" color="default" />
           ) : (
-            <Text className="text-white text-base font-medium">Sign In</Text>
+            <StyledText className="text-white text-base font-medium">Sign In</StyledText>
           )}
-        </Pressable>
+        </StyledPressable>
 
         {/* Sign Up Link */}
-        <View className="flex-row items-center justify-center">
-          <Text className="text-gray-700 text-sm">Don't have an account? </Text>
-          <Pressable
+        <StyledView className="flex-row items-center justify-center">
+          <StyledText className="text-gray-700 text-sm">Don't have an account? </StyledText>
+          <StyledPressable
             onPress={() => router.push("/(auth)/signup")}
             className="active:opacity-70"
           >
-            <Text className="text-[#4A9EFF] text-sm font-medium">Sign up</Text>
-          </Pressable>
-        </View>
-      </View>
+            <StyledText className="text-[#4A9EFF] text-sm font-medium">Sign up</StyledText>
+          </StyledPressable>
+        </StyledView>
+      </StyledView>
 
       {/* Decorative Bottom Shape */}
-      <View className="absolute bottom-0 left-0 right-0 h-64 bg-[#6B7C6E] rounded-tl-[200px]" />
-    </View>
+      <StyledView className="absolute bottom-0 left-0 right-0 h-64 bg-[#6B7C6E] rounded-tl-[200px]" />
+    </StyledView>
   );
 }

@@ -1,7 +1,7 @@
 import { Ionicons } from "@expo/vector-icons";
 import { router } from "expo-router";
 import { ErrorView, Spinner, TextField } from "heroui-native";
-import { useState } from "react";
+import React, { useState } from "react";
 import { Pressable, Text, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { withUniwind } from "uniwind";
@@ -9,6 +9,9 @@ import { withUniwind } from "uniwind";
 import { authClient } from "@/lib/auth-client";
 
 const StyledIonicons = withUniwind(Ionicons);
+const StyledView = withUniwind(View);
+const StyledText = withUniwind(Text);
+const StyledPressable = withUniwind(Pressable);
 
 export default function SignUpScreen() {
   const insets = useSafeAreaInsets();
@@ -66,10 +69,10 @@ export default function SignUpScreen() {
   }
 
   return (
-    <View className="flex-1 bg-white" style={{ paddingTop: insets.top }}>
+    <StyledView className="flex-1 bg-white" style={{ paddingTop: insets.top }}>
       {/* Header with Back Button */}
-      <View className="px-6 pt-4 pb-8">
-        <Pressable
+      <StyledView className="px-6 pt-4 pb-8">
+        <StyledPressable
           onPress={() => router.back()}
           className="w-12 h-12 rounded-full bg-gray-100 items-center justify-center active:opacity-70"
         >
@@ -78,16 +81,16 @@ export default function SignUpScreen() {
             size={24}
             className="text-gray-800"
           />
-        </Pressable>
-      </View>
+        </StyledPressable>
+      </StyledView>
 
       {/* Content */}
-      <View className="flex-1 px-6">
+      <StyledView className="flex-1 px-6">
         {/* Title */}
-        <View className="mb-8">
-          <Text className="text-4xl font-bold text-gray-800 mb-1">Sign UP</Text>
-          <Text className="text-base text-gray-500">To Get Start!</Text>
-        </View>
+        <StyledView className="mb-8">
+          <StyledText className="text-4xl font-bold text-gray-800 mb-1">Sign UP</StyledText>
+          <StyledText className="text-base text-gray-500">To Get Start!</StyledText>
+        </StyledView>
 
         {/* Error Message */}
         {error && (
@@ -97,7 +100,7 @@ export default function SignUpScreen() {
         )}
 
         {/* Form Fields */}
-        <View className="gap-4 mb-6">
+        <StyledView className="gap-4 mb-6">
           <TextField>
             <TextField.Input
               value={name}
@@ -138,10 +141,10 @@ export default function SignUpScreen() {
               className="bg-white border border-gray-300 rounded-xl px-4 py-4 text-base"
             />
           </TextField>
-        </View>
+        </StyledView>
 
         {/* Sign Up Button */}
-        <Pressable
+        <StyledPressable
           onPress={handleSignUp}
           disabled={isLoading}
           className="bg-[#6B7C6E] rounded-xl py-4 items-center justify-center mb-6 active:opacity-80"
@@ -150,26 +153,26 @@ export default function SignUpScreen() {
           {isLoading ? (
             <Spinner size="sm" color="default" />
           ) : (
-            <Text className="text-white text-base font-medium">Sign Up</Text>
+            <StyledText className="text-white text-base font-medium">Sign Up</StyledText>
           )}
-        </Pressable>
+        </StyledPressable>
 
         {/* Sign In Link */}
-        <View className="flex-row items-center justify-center">
-          <Text className="text-gray-700 text-sm">
+        <StyledView className="flex-row items-center justify-center">
+          <StyledText className="text-gray-700 text-sm">
             Already have an account?{" "}
-          </Text>
-          <Pressable
+          </StyledText>
+          <StyledPressable
             onPress={() => router.back()}
             className="active:opacity-70"
           >
-            <Text className="text-[#4A9EFF] text-sm font-medium">Sign in</Text>
-          </Pressable>
-        </View>
-      </View>
+            <StyledText className="text-[#4A9EFF] text-sm font-medium">Sign in</StyledText>
+          </StyledPressable>
+        </StyledView>
+      </StyledView>
 
       {/* Decorative Bottom Shape */}
-      <View className="absolute bottom-0 left-0 right-0 h-64 bg-[#6B7C6E] rounded-tl-[200px]" />
-    </View>
+      <StyledView className="absolute bottom-0 left-0 right-0 h-64 bg-[#6B7C6E] rounded-tl-[200px]" />
+    </StyledView>
   );
 }

@@ -20,6 +20,7 @@
     "@outfit-planner/env": "workspace:*",
     "@react-navigation/drawer": "^7.3.9",
     "@react-navigation/elements": "^2.8.1",
+    "@rn-primitives/slot": "^1.2.0",
     "better-auth": "catalog:",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
