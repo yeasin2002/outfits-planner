@@ -1,40 +1,58 @@
 import { Ionicons } from "@expo/vector-icons";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { router } from "expo-router";
-import { ErrorView, Spinner, TextField } from "heroui-native";
-import { useState } from "react";
+import { ErrorView, Label, Spinner, TextField } from "heroui-native";
+import React, { useState } from "react";
+import { Controller, useForm } from "react-hook-form";
 import { Pressable, Text, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { withUniwind } from "uniwind";
+import { z } from "zod";
 
 import { authClient } from "@/lib/auth-client";
-import React from "react";
 
 const StyledIonicons = withUniwind(Ionicons);
 const StyledView = withUniwind(View);
 const StyledText = withUniwind(Text);
 const StyledPressable = withUniwind(Pressable);
 
+// Zod validation schema
+const loginSchema = z.object({
+  email: z.string().min(1, "Email is required").email("Please enter a valid email address"),
+  password: z
+    .string()
+    .min(1, "Password is required")
+    .min(6, "Password must be at least 6 characters"),
+});
+
+type LoginFormData = z.infer<typeof loginSchema>;
+
 export default function LoginScreen() {
   const insets = useSafeAreaInsets();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  async function handleLogin() {
+  const {
+    control,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<LoginFormData>({
+    resolver: zodResolver(loginSchema),
+    defaultValues: {
+      email: "",
+      password: "",
+    },
+  });
+
+  async function onSubmit(data: LoginFormData) {
     setError(null);
-
-    if (!email || !password) {
-      setError("Email and password are required");
-      return;
-    }
-
     setIsLoading(true);
 
     await authClient.signIn.email(
       {
-        email,
-        password,
+        email: data.email,
+        password: data.password,
       },
       {
         onError(error) {
@@ -42,14 +60,13 @@ export default function LoginScreen() {
           setIsLoading(false);
         },
         onSuccess() {
-          setEmail("");
-          setPassword("");
+          reset();
           router.replace("/(drawer)");
         },
         onFinished() {
           setIsLoading(false);
         },
-      }
+      },
     );
   }
 
@@ -61,11 +78,7 @@ export default function LoginScreen() {
           onPress={() => router.back()}
           className="w-12 h-12 rounded-full bg-gray-100 items-center justify-center active:opacity-70"
         >
-          <StyledIonicons
-            name="arrow-back"
-            size={24}
-            className="text-gray-800"
-          />
+          <StyledIonicons name="arrow-back" size={24} className="text-gray-800" />
         </StyledPressable>
       </StyledView>
 
@@ -86,26 +99,62 @@ export default function LoginScreen() {
 
         {/* Form Fields */}
         <StyledView className="gap-4 mb-6">
-          <TextField>
-            <TextField.Input
-              value={email}
-              onChangeText={setEmail}
-              placeholder="Email"
-              keyboardType="email-address"
-              autoCapitalize="none"
-              className="bg-white border border-gray-300 rounded-xl px-4 py-4 text-base"
-            />
-          </TextField>
+          {/* Email Field */}
+          <Controller
+            control={control}
+            name="email"
+            render={({ field: { onChange, onBlur, value } }) => (
+              <StyledView>
+                <Label isRequired isInvalid={!!errors.email} className="mb-2">
+                  <Label.Text>Email</Label.Text>
+                </Label>
+                <TextField isInvalid={!!errors.email}>
+                  <TextField.Input
+                    value={value}
+                    onChangeText={onChange}
+                    onBlur={onBlur}
+                    placeholder="Enter your email"
+                    keyboardType="email-address"
+                    autoCapitalize="none"
+                    className="bg-white border border-gray-300 rounded-xl px-4 py-4 text-base"
+                  />
+                </TextField>
+                {errors.email && (
+                  <ErrorView isInvalid className="mt-1">
+                    {errors.email.message}
+                  </ErrorView>
+                )}
+              </StyledView>
+            )}
+          />
 
-          <TextField>
-            <TextField.Input
-              value={password}
-              onChangeText={setPassword}
-              placeholder="Password"
-              secureTextEntry
-              className="bg-white border border-gray-300 rounded-xl px-4 py-4 text-base"
-            />
-          </TextField>
+          {/* Password Field */}
+          <Controller
+            control={control}
+            name="password"
+            render={({ field: { onChange, onBlur, value } }) => (
+              <StyledView>
+                <Label isRequired isInvalid={!!errors.password} className="mb-2">
+                  <Label.Text>Password</Label.Text>
+                </Label>
+                <TextField isInvalid={!!errors.password}>
+                  <TextField.Input
+                    value={value}
+                    onChangeText={onChange}
+                    onBlur={onBlur}
+                    placeholder="Enter your password"
+                    secureTextEntry
+                    className="bg-white border border-gray-300 rounded-xl px-4 py-4 text-base"
+                  />
+                </TextField>
+                {errors.password && (
+                  <ErrorView isInvalid className="mt-1">
+                    {errors.password.message}
+                  </ErrorView>
+                )}
+              </StyledView>
+            )}
+          />
         </StyledView>
 
         {/* Forgot Password Link */}
@@ -117,7 +166,7 @@ export default function LoginScreen() {
 
         {/* Sign In Button */}
         <StyledPressable
-          onPress={handleLogin}
+          onPress={handleSubmit(onSubmit)}
           disabled={isLoading}
           className="bg-[#6B7C6E] rounded-xl py-4 items-center justify-center mb-6 active:opacity-80"
           style={{ opacity: isLoading ? 0.6 : 1 }}
