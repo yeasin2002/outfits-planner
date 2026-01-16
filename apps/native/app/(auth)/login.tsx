@@ -1,21 +1,13 @@
-import { Ionicons } from "@expo/vector-icons";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { router } from "expo-router";
 import { ErrorView, Spinner } from "heroui-native";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { Pressable, Text, View } from "react-native";
-import { withUniwind } from "uniwind";
 import { z } from "zod";
 
-// import { AuthWrapper } from "@/components/auth-wrapper";
 import { FormInput } from "@/components/shared/form-input";
+import { StyledIonicons, StyledPressable, StyledText, StyledView } from "@/components/ui/styled";
 import { authClient } from "@/lib/auth-client";
-
-const StyledIonicons = withUniwind(Ionicons);
-const StyledView = withUniwind(View);
-const StyledText = withUniwind(Text);
-const StyledPressable = withUniwind(Pressable);
 
 // Zod validation schema
 const loginSchema = z.object({

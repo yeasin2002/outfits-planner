@@ -1,14 +1,8 @@
-import { Ionicons } from "@expo/vector-icons";
 import { router } from "expo-router";
 import { ErrorView, InputOTP, Spinner } from "heroui-native";
 import React, { useState } from "react";
-import { Pressable, Text, View } from "react-native";
-import { withUniwind } from "uniwind";
 
-const StyledIonicons = withUniwind(Ionicons);
-const StyledView = withUniwind(View);
-const StyledText = withUniwind(Text);
-const StyledPressable = withUniwind(Pressable);
+import { StyledIonicons, StyledPressable, StyledText, StyledView } from "@/components/ui/styled";
 
 export default function VerifyOTPScreen() {
   const [otp, setOtp] = useState("");

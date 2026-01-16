@@ -1,26 +1,16 @@
-import { Ionicons } from "@expo/vector-icons";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { router } from "expo-router";
 import { ErrorView, Spinner } from "heroui-native";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { Pressable, Text, View } from "react-native";
-import { withUniwind } from "uniwind";
 import { z } from "zod";
 
 import { FormInput } from "@/components/shared/form-input";
-
-const StyledIonicons = withUniwind(Ionicons);
-const StyledView = withUniwind(View);
-const StyledText = withUniwind(Text);
-const StyledPressable = withUniwind(Pressable);
+import { StyledIonicons, StyledPressable, StyledText, StyledView } from "@/components/ui/styled";
 
 // Zod validation schema
 const forgotPasswordSchema = z.object({
-  email: z
-    .string()
-    .min(1, "Email is required")
-    .email({ message: "Please enter a valid email address" }),
+  email: z.string().min(1, "Email is required").email("Please enter a valid email address"),
 });
 
 type ForgotPasswordFormData = z.infer<typeof forgotPasswordSchema>;
@@ -37,7 +27,7 @@ export default function ForgotPasswordScreen() {
     },
   });
 
-  async function onSubmit(data: ForgotPasswordFormData) {
+  async function onSubmit(_data: ForgotPasswordFormData) {
     setError(null);
     setSuccess(false);
     setIsLoading(true);
