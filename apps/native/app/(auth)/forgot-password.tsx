@@ -8,9 +8,7 @@ import { Pressable, Text, View } from "react-native";
 import { withUniwind } from "uniwind";
 import { z } from "zod";
 
-// import { AuthWrapper } from "@/components/auth-wrapper";
 import { FormInput } from "@/components/shared/form-input";
-import { authClient } from "@/lib/auth-client";
 
 const StyledIonicons = withUniwind(Ionicons);
 const StyledView = withUniwind(View);
@@ -18,51 +16,49 @@ const StyledText = withUniwind(Text);
 const StyledPressable = withUniwind(Pressable);
 
 // Zod validation schema
-const loginSchema = z.object({
-  email: z.string().min(1, "Email is required").email("Please enter a valid email address"),
-  password: z
+const forgotPasswordSchema = z.object({
+  email: z
     .string()
-    .min(1, "Password is required")
-    .min(6, "Password must be at least 6 characters"),
+    .min(1, "Email is required")
+    .email({ message: "Please enter a valid email address" }),
 });
 
-type LoginFormData = z.infer<typeof loginSchema>;
+type ForgotPasswordFormData = z.infer<typeof forgotPasswordSchema>;
 
-export default function LoginScreen() {
+export default function ForgotPasswordScreen() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [success, setSuccess] = useState(false);
 
-  const { control, handleSubmit, reset } = useForm<LoginFormData>({
-    resolver: zodResolver(loginSchema),
+  const { control, handleSubmit } = useForm<ForgotPasswordFormData>({
+    resolver: zodResolver(forgotPasswordSchema),
     defaultValues: {
       email: "",
-      password: "",
     },
   });
 
-  async function onSubmit(data: LoginFormData) {
+  async function onSubmit(data: ForgotPasswordFormData) {
     setError(null);
+    setSuccess(false);
     setIsLoading(true);
 
-    await authClient.signIn.email(
-      {
-        email: data.email,
-        password: data.password,
-      },
-      {
-        onError(error) {
-          setError(error.error?.message || "Failed to sign in");
-          setIsLoading(false);
-        },
-        onSuccess() {
-          reset();
-          router.replace("/(drawer)");
-        },
-        onFinished() {
-          setIsLoading(false);
-        },
-      },
-    );
+    try {
+      // Simulate sending reset code
+      await new Promise((resolve) => setTimeout(resolve, 1500));
+      setSuccess(true);
+      setIsLoading(false);
+
+      // TODO: Implement with Better Auth when available
+      // await authClient.forgotPassword({ email: data.email });
+
+      // Optionally navigate to verify OTP after delay
+      setTimeout(() => {
+        router.push("/(auth)/verify-otp");
+      }, 2000);
+    } catch (err: any) {
+      setError(err?.message || "Failed to send reset code");
+      setIsLoading(false);
+    }
   }
 
   return (
@@ -81,8 +77,10 @@ export default function LoginScreen() {
       <StyledView className="flex-1 px-6">
         {/* Title */}
         <StyledView className="mb-8">
-          <StyledText className="text-4xl font-bold text-gray-700 mb-1">Sign In</StyledText>
-          <StyledText className="text-base text-gray-400">To Get Start!</StyledText>
+          <StyledText className="text-4xl font-bold text-gray-700 mb-1">Forget Password</StyledText>
+          <StyledText className="text-base text-gray-400">
+            Enter your email to reset password
+          </StyledText>
         </StyledView>
 
         {/* Error Message */}
@@ -90,6 +88,15 @@ export default function LoginScreen() {
           <ErrorView isInvalid={!!error} className="mb-4">
             {error}
           </ErrorView>
+        )}
+
+        {/* Success Message */}
+        {success && (
+          <StyledView className="mb-4 p-4 bg-green-50 border border-green-200 rounded-xl">
+            <StyledText className="text-green-700 text-sm">
+              Reset code sent! Check your email for instructions.
+            </StyledText>
+          </StyledView>
         )}
 
         {/* Form Fields */}
@@ -103,28 +110,9 @@ export default function LoginScreen() {
             keyboardType="email-address"
             autoCapitalize="none"
           />
-
-          <FormInput
-            control={control}
-            name="password"
-            label="Password"
-            placeholder="Enter your password"
-            isRequired
-            secureTextEntry
-          />
         </StyledView>
 
-        {/* Forgot Password Link */}
-        <StyledView className="items-end mb-6">
-          <StyledPressable
-            onPress={() => router.push("/(auth)/forgot-password")}
-            className="active:opacity-70"
-          >
-            <StyledText className="text-[#4A9EFF] text-sm">Forgot Password?</StyledText>
-          </StyledPressable>
-        </StyledView>
-
-        {/* Sign In Button */}
+        {/* Send Code Button */}
         <StyledPressable
           onPress={handleSubmit(onSubmit)}
           disabled={isLoading}
@@ -134,20 +122,9 @@ export default function LoginScreen() {
           {isLoading ? (
             <Spinner size="sm" color="default" />
           ) : (
-            <StyledText className="text-white text-base font-medium">Sign In</StyledText>
+            <StyledText className="text-white text-base font-medium">Send Code</StyledText>
           )}
         </StyledPressable>
-
-        {/* Sign Up Link */}
-        <StyledView className="flex-row items-center justify-center">
-          <StyledText className="text-gray-800 text-sm">Don't have an account? </StyledText>
-          <StyledPressable
-            onPress={() => router.push("/(auth)/signup")}
-            className="active:opacity-70"
-          >
-            <StyledText className="text-[#4A9EFF] text-sm font-medium">Sign Up</StyledText>
-          </StyledPressable>
-        </StyledView>
       </StyledView>
     </StyledView>
   );

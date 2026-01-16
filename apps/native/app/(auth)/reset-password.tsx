@@ -17,13 +17,8 @@ const StyledText = withUniwind(Text);
 const StyledPressable = withUniwind(Pressable);
 
 // Zod validation schema
-const signupSchema = z
+const resetPasswordSchema = z
   .object({
-    name: z.string().min(1, "Name is required").min(2, "Name must be at least 2 characters"),
-    email: z
-      .string()
-      .min(1, "Email is required")
-      .email({ message: "Please enter a valid email address" }),
     password: z
       .string()
       .min(1, "Password is required")
@@ -35,40 +30,37 @@ const signupSchema = z
     path: ["confirmPassword"],
   });
 
-type SignupFormData = z.infer<typeof signupSchema>;
+type ResetPasswordFormData = z.infer<typeof resetPasswordSchema>;
 
-export default function SignupScreen() {
+export default function ResetPasswordScreen() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const { control, handleSubmit, reset } = useForm<SignupFormData>({
-    resolver: zodResolver(signupSchema),
+  const { control, handleSubmit, reset } = useForm<ResetPasswordFormData>({
+    resolver: zodResolver(resetPasswordSchema),
     defaultValues: {
-      name: "",
-      email: "",
       password: "",
       confirmPassword: "",
     },
   });
 
-  async function onSubmit(data: SignupFormData) {
+  async function onSubmit(data: ResetPasswordFormData) {
     setError(null);
     setIsLoading(true);
 
-    await authClient.signUp.email(
+    await authClient.resetPassword(
       {
-        name: data.name,
-        email: data.email,
-        password: data.password,
+        newPassword: data.password,
       },
       {
         onError(error) {
-          setError(error.error?.message || "Failed to sign up");
+          setError(error.error?.message || "Failed to reset password");
           setIsLoading(false);
         },
         onSuccess() {
           reset();
-          router.replace("/(drawer)");
+          // Navigate to login page after successful reset
+          router.replace("/(auth)/login");
         },
         onFinished() {
           setIsLoading(false);
@@ -93,8 +85,8 @@ export default function SignupScreen() {
       <StyledView className="flex-1 px-6">
         {/* Title */}
         <StyledView className="mb-8">
-          <StyledText className="text-4xl font-bold text-gray-700 mb-1">Sign UP</StyledText>
-          <StyledText className="text-base text-gray-400">To Get Start!</StyledText>
+          <StyledText className="text-4xl font-bold text-gray-700 mb-1">Reset Password</StyledText>
+          <StyledText className="text-base text-gray-400">Create a new one</StyledText>
         </StyledView>
 
         {/* Error Message */}
@@ -108,28 +100,9 @@ export default function SignupScreen() {
         <StyledView className="gap-4 mb-6">
           <FormInput
             control={control}
-            name="name"
-            label="Name"
-            placeholder="Enter your name"
-            isRequired
-            autoCapitalize="words"
-          />
-
-          <FormInput
-            control={control}
-            name="email"
-            label="Email"
-            placeholder="Enter your email"
-            isRequired
-            keyboardType="email-address"
-            autoCapitalize="none"
-          />
-
-          <FormInput
-            control={control}
             name="password"
             label="Create Password"
-            placeholder="Create your password"
+            placeholder="Create your new password"
             isRequired
             secureTextEntry
           />
@@ -138,13 +111,13 @@ export default function SignupScreen() {
             control={control}
             name="confirmPassword"
             label="Confirm Password"
-            placeholder="Confirm your password"
+            placeholder="Confirm your new password"
             isRequired
             secureTextEntry
           />
         </StyledView>
 
-        {/* Sign Up Button */}
+        {/* Save Password Button */}
         <StyledPressable
           onPress={handleSubmit(onSubmit)}
           disabled={isLoading}
@@ -154,20 +127,9 @@ export default function SignupScreen() {
           {isLoading ? (
             <Spinner size="sm" color="default" />
           ) : (
-            <StyledText className="text-white text-base font-medium">Sign Up</StyledText>
+            <StyledText className="text-white text-base font-medium">Save Password</StyledText>
           )}
         </StyledPressable>
-
-        {/* Sign In Link */}
-        <StyledView className="flex-row items-center justify-center">
-          <StyledText className="text-gray-800 text-sm">Already have an account? </StyledText>
-          <StyledPressable
-            onPress={() => router.push("/(auth)/login")}
-            className="active:opacity-70"
-          >
-            <StyledText className="text-[#4A9EFF] text-sm font-medium">Sign in</StyledText>
-          </StyledPressable>
-        </StyledView>
       </StyledView>
     </StyledView>
   );
