@@ -1,14 +1,15 @@
 import { Ionicons } from "@expo/vector-icons";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { router } from "expo-router";
-import { ErrorView, Label, Spinner, TextField } from "heroui-native";
+import { ErrorView, Spinner } from "heroui-native";
 import React, { useState } from "react";
-import { Controller, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { Pressable, Text, View } from "react-native";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { withUniwind } from "uniwind";
 import { z } from "zod";
 
+import { AuthWrapper } from "@/components/auth-wrapper";
+import { FormInput } from "@/components/shared/form-input";
 import { authClient } from "@/lib/auth-client";
 
 const StyledIonicons = withUniwind(Ionicons);
@@ -28,16 +29,10 @@ const loginSchema = z.object({
 type LoginFormData = z.infer<typeof loginSchema>;
 
 export default function LoginScreen() {
-  const insets = useSafeAreaInsets();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const {
-    control,
-    handleSubmit,
-    reset,
-    formState: { errors },
-  } = useForm<LoginFormData>({
+  const { control, handleSubmit, reset } = useForm<LoginFormData>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
       email: "",
@@ -71,7 +66,7 @@ export default function LoginScreen() {
   }
 
   return (
-    <StyledView className="flex-1 bg-white" style={{ paddingTop: insets.top }}>
+    <AuthWrapper>
       {/* Header with Back Button */}
       <StyledView className="px-6 pt-4 pb-8">
         <StyledPressable
@@ -86,8 +81,8 @@ export default function LoginScreen() {
       <StyledView className="flex-1 px-6">
         {/* Title */}
         <StyledView className="mb-8">
-          <StyledText className="text-4xl font-bold text-gray-800 mb-1">Sign In</StyledText>
-          <StyledText className="text-base text-gray-500">Welcome Back!</StyledText>
+          <StyledText className="text-4xl font-bold text-gray-700 mb-1">Sign In</StyledText>
+          <StyledText className="text-base text-gray-400">To Get Start!</StyledText>
         </StyledView>
 
         {/* Error Message */}
@@ -99,61 +94,23 @@ export default function LoginScreen() {
 
         {/* Form Fields */}
         <StyledView className="gap-4 mb-6">
-          {/* Email Field */}
-          <Controller
+          <FormInput
             control={control}
             name="email"
-            render={({ field: { onChange, onBlur, value } }) => (
-              <StyledView>
-                <Label isRequired isInvalid={!!errors.email} className="mb-2">
-                  <Label.Text>Email</Label.Text>
-                </Label>
-                <TextField isInvalid={!!errors.email}>
-                  <TextField.Input
-                    value={value}
-                    onChangeText={onChange}
-                    onBlur={onBlur}
-                    placeholder="Enter your email"
-                    keyboardType="email-address"
-                    autoCapitalize="none"
-                    className="bg-white border border-gray-300 rounded-xl px-4 py-4 text-base"
-                  />
-                </TextField>
-                {errors.email && (
-                  <ErrorView isInvalid className="mt-1">
-                    {errors.email.message}
-                  </ErrorView>
-                )}
-              </StyledView>
-            )}
+            label="Email"
+            placeholder="Enter your email"
+            isRequired
+            keyboardType="email-address"
+            autoCapitalize="none"
           />
 
-          {/* Password Field */}
-          <Controller
+          <FormInput
             control={control}
             name="password"
-            render={({ field: { onChange, onBlur, value } }) => (
-              <StyledView>
-                <Label isRequired isInvalid={!!errors.password} className="mb-2">
-                  <Label.Text>Password</Label.Text>
-                </Label>
-                <TextField isInvalid={!!errors.password}>
-                  <TextField.Input
-                    value={value}
-                    onChangeText={onChange}
-                    onBlur={onBlur}
-                    placeholder="Enter your password"
-                    secureTextEntry
-                    className="bg-white border border-gray-300 rounded-xl px-4 py-4 text-base"
-                  />
-                </TextField>
-                {errors.password && (
-                  <ErrorView isInvalid className="mt-1">
-                    {errors.password.message}
-                  </ErrorView>
-                )}
-              </StyledView>
-            )}
+            label="Password"
+            placeholder="Enter your password"
+            isRequired
+            secureTextEntry
           />
         </StyledView>
 
@@ -180,18 +137,15 @@ export default function LoginScreen() {
 
         {/* Sign Up Link */}
         <StyledView className="flex-row items-center justify-center">
-          <StyledText className="text-gray-700 text-sm">Don't have an account? </StyledText>
+          <StyledText className="text-gray-800 text-sm">Don't have an account? </StyledText>
           <StyledPressable
             onPress={() => router.push("/(auth)/signup")}
             className="active:opacity-70"
           >
-            <StyledText className="text-[#4A9EFF] text-sm font-medium">Sign up</StyledText>
+            <StyledText className="text-[#4A9EFF] text-sm font-medium">Sign Up</StyledText>
           </StyledPressable>
         </StyledView>
       </StyledView>
-
-      {/* Decorative Bottom Shape */}
-      <StyledView className="absolute bottom-0 left-0 right-0 h-64 bg-[#6B7C6E] rounded-tl-[200px]" />
-    </StyledView>
+    </AuthWrapper>
   );
 }
