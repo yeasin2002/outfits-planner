@@ -1,7 +1,11 @@
+import type { Ionicons, MaterialIcons } from "@expo/vector-icons";
 import { usePathname, useRouter } from "expo-router";
 import React from "react";
 import { Pressable, Text, View } from "react-native";
 import { StyledIonicons, StyledMaterialIcons } from "./ui/styled";
+
+type IoniconsName = React.ComponentProps<typeof Ionicons>["name"];
+type MaterialIconsName = React.ComponentProps<typeof MaterialIcons>["name"];
 
 export function BottomNavigation() {
   const pathname = usePathname();
@@ -10,29 +14,29 @@ export function BottomNavigation() {
   const navItems = [
     {
       name: "Home",
-      icon: "home",
-      iconOutline: "home-outline",
+      icon: "home" as IoniconsName,
+      iconOutline: "home-outline" as IoniconsName,
       path: "/(drawer)",
       IconComponent: StyledIonicons,
     },
     {
       name: "Wardrobe",
-      icon: "checkroom",
-      iconOutline: "checkroom",
+      icon: "checkroom" as MaterialIconsName,
+      iconOutline: "checkroom" as MaterialIconsName,
       path: "/(drawer)/wardrobe",
       IconComponent: StyledMaterialIcons,
     },
     {
       name: "Outfits",
-      icon: "shirt",
-      iconOutline: "shirt-outline",
+      icon: "shirt" as IoniconsName,
+      iconOutline: "shirt-outline" as IoniconsName,
       path: "/(drawer)/outfits",
       IconComponent: StyledIonicons,
     },
     {
       name: "Settings",
-      icon: "settings",
-      iconOutline: "settings-outline",
+      icon: "settings" as IoniconsName,
+      iconOutline: "settings-outline" as IoniconsName,
       path: "/(drawer)/settings",
       IconComponent: StyledIonicons,
     },
@@ -65,7 +69,7 @@ export function BottomNavigation() {
             ) : (
               <>
                 <IconComponent
-                  name={active ? item.icon : item.iconOutline}
+                  name={(active ? item.icon : item.iconOutline) as any}
                   size={24}
                   className="text-white mb-1"
                 />
