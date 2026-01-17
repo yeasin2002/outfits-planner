@@ -187,28 +187,6 @@ export default function Wardrobe() {
         onSubmit={handleAddItem}
       />
 
-      {/* Bottom Navigation */}
-      <View className="absolute bottom-0 left-0 right-0 bg-[#686F60] flex-row items-center justify-around py-4 px-6">
-        <Pressable className="items-center active:opacity-70">
-          <StyledIonicons name="home-outline" size={24} className="text-white mb-1" />
-          <Text className="text-xs text-white opacity-70">Home</Text>
-        </Pressable>
-        <Pressable className="items-center active:opacity-70">
-          <View className="items-center">
-            <Text className="text-base font-bold text-white mb-1">Wardrobe</Text>
-            <View className="w-3 h-3 bg-[#EE9250] rounded-full" />
-          </View>
-        </Pressable>
-        <Pressable className="items-center active:opacity-70">
-          <StyledIonicons name="shirt-outline" size={24} className="text-white mb-1" />
-          <Text className="text-xs text-white opacity-70">Outfits</Text>
-        </Pressable>
-        <Pressable className="items-center active:opacity-70">
-          <StyledIonicons name="settings-outline" size={24} className="text-white mb-1" />
-          <Text className="text-xs text-white opacity-70">Settings</Text>
-        </Pressable>
-      </View>
-
       {/* Add Item Dialog */}
       <AddItemDialog
         isOpen={isAddDialogOpen}

@@ -140,26 +140,6 @@ export default function Home() {
           </View>
         </View>
       </ScrollView>
-
-      {/* Bottom Navigation */}
-      <View className="absolute bottom-0 left-0 right-0 bg-[#686F60] flex-row items-center justify-around py-4 px-6">
-        <Pressable className="items-center active:opacity-70">
-          <StyledIonicons name="home" size={24} className="text-white mb-1" />
-          <Text className="text-xs text-white">Home</Text>
-        </Pressable>
-        <Pressable className="items-center active:opacity-70">
-          <StyledMaterialIcons name="checkroom" size={24} className="text-white mb-1" />
-          <Text className="text-xs text-white opacity-70">Wardrobe</Text>
-        </Pressable>
-        <Pressable className="items-center active:opacity-70">
-          <StyledIonicons name="shirt-outline" size={24} className="text-white mb-1" />
-          <Text className="text-xs text-white opacity-70">Outfits</Text>
-        </Pressable>
-        <Pressable className="items-center active:opacity-70">
-          <StyledIonicons name="settings-outline" size={24} className="text-white mb-1" />
-          <Text className="text-xs text-white opacity-70">Settings</Text>
-        </Pressable>
-      </View>
     </View>
   );
 }

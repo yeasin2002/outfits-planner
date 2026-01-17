@@ -1,5 +1,6 @@
 import { Link, Stack } from "expo-router";
 import { Button, Surface } from "heroui-native";
+import React from "react";
 import { Text, View } from "react-native";
 
 import { Container } from "@/components/container";
