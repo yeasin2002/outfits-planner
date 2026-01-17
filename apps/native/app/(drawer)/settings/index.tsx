@@ -1,7 +1,8 @@
 import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
+import { Switch } from "heroui-native";
 import React, { useState } from "react";
-import { Image, Pressable, ScrollView, Switch, Text, View } from "react-native";
+import { Image, Pressable, ScrollView, Text, View } from "react-native";
 import { withUniwind } from "uniwind";
 
 const StyledIonicons = withUniwind(Ionicons);
@@ -362,11 +363,32 @@ export default function SettingsScreen() {
                 </Text>
               </View>
               <Switch
-                value={locationEnabled}
-                onValueChange={setLocationEnabled}
-                trackColor={{ false: "#D1D5DB", true: "#EE9250" }}
-                thumbColor="#FFFFFF"
-              />
+                isSelected={locationEnabled}
+                onSelectedChange={setLocationEnabled}
+                className="w-11 h-5.5"
+                animation={{
+                  backgroundColor: {
+                    value: ["#E5E7EB", "#EE9250"],
+                  },
+                }}
+              >
+                <Switch.Thumb
+                  className="size-4.5"
+                  animation={{
+                    left: {
+                      value: 2,
+                      springConfig: {
+                        damping: 30,
+                        stiffness: 300,
+                        mass: 1,
+                      },
+                    },
+                    backgroundColor: {
+                      value: ["#FFFFFF", "#FFFFFF"],
+                    },
+                  }}
+                />
+              </Switch>
             </View>
 
             {/* Help & Support */}
