@@ -1,10 +1,9 @@
-import { Ionicons, MaterialIcons } from "@expo/vector-icons";
+import { Ionicons } from "@expo/vector-icons";
 import React from "react";
 import { Image, Pressable, ScrollView, Text, View } from "react-native";
 import { withUniwind } from "uniwind";
 
 const StyledIonicons = withUniwind(Ionicons);
-const StyledMaterialIcons = withUniwind(MaterialIcons);
 
 export default function Home() {
   return (
@@ -155,7 +154,7 @@ function OutfitCard({
 }) {
   return (
     <Pressable className="active:opacity-70">
-      <View className="w-[140px] h-[180px] rounded-xl overflow-hidden">
+      <View className="w-35 h-45 rounded-xl overflow-hidden">
         <Image source={{ uri: image }} className="w-full h-full" resizeMode="cover" />
         <View className="absolute bottom-0 left-0 right-0 bg-black/40 p-3">
           <Text className="text-xs text-white/80 mb-1">{category}</Text>
@@ -169,8 +168,8 @@ function OutfitCard({
 function ItemCard({ image, title, category }: { image: string; title: string; category: string }) {
   return (
     <Pressable className="active:opacity-70">
-      <View className="w-[110px]">
-        <View className="w-[110px] h-[160px] rounded-xl overflow-hidden bg-[#F5F5F5] mb-2">
+      <View className="w-27.5">
+        <View className="w-27.5 h-40 rounded-xl overflow-hidden bg-[#F5F5F5] mb-2">
           <Image source={{ uri: image }} className="w-full h-full" resizeMode="cover" />
         </View>
         <Text className="text-sm font-medium" style={{ color: "#686F60" }}>

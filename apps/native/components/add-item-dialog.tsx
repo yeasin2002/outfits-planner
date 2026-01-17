@@ -20,8 +20,8 @@ interface AddItemDialogProps {
   onSubmit: (data: AddItemFormData & { image?: string }) => void;
 }
 
-const categories = ["Tops", "Bottoms", "Outwear", "Shoes", "Accessories"];
-const seasons = ["Spring", "Summer", "Fall", "Winter", "All"];
+// const categories = ["Tops", "Bottoms", "Outwear", "Shoes", "Accessories"];
+// const seasons = ["Spring", "Summer", "Fall", "Winter", "All"];
 
 export function AddItemDialog({ isOpen, onOpenChange, onSubmit }: AddItemDialogProps) {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
@@ -127,7 +127,7 @@ export function AddItemDialog({ isOpen, onOpenChange, onSubmit }: AddItemDialogP
             {/* Image Upload Section */}
             <View className="gap-4">
               <Pressable
-                className="border-[0.5px] border-dashed rounded-md h-[95px] items-center justify-center gap-2 active:opacity-70"
+                className="border-[0.5px] border-dashed rounded-md h-23.75 items-center justify-center gap-2 active:opacity-70"
                 style={{ borderColor: "#828282" }}
                 onPress={handleTakePhoto}
               >
@@ -144,7 +144,7 @@ export function AddItemDialog({ isOpen, onOpenChange, onSubmit }: AddItemDialogP
               </View>
 
               <Pressable
-                className="border-[0.5px] border-dashed rounded-md h-[95px] items-center justify-center gap-2 active:opacity-70"
+                className="border-[0.5px] border-dashed rounded-md h-23.75 items-center justify-center gap-2 active:opacity-70"
                 style={{ borderColor: "#828282" }}
                 onPress={handleUpload}
               >
@@ -214,7 +214,7 @@ export function AddItemDialog({ isOpen, onOpenChange, onSubmit }: AddItemDialogP
             <View className="flex-row items-center justify-between gap-3 pb-6">
               <Pressable
                 onPress={handleCancel}
-                className="flex-1 h-[42px] rounded-md border border-[#686F60] items-center justify-center active:opacity-70"
+                className="flex-1 h-10.5 rounded-md border border-[#686F60] items-center justify-center active:opacity-70"
               >
                 <Text className="text-[14px]" style={{ color: "#686F60" }}>
                   Cancel
@@ -224,7 +224,7 @@ export function AddItemDialog({ isOpen, onOpenChange, onSubmit }: AddItemDialogP
               <Pressable
                 onPress={handleSubmit(onFormSubmit)}
                 disabled={isLoading}
-                className="flex-1 h-[42px] rounded-md items-center justify-center active:opacity-70"
+                className="flex-1 h-10.5 rounded-md items-center justify-center active:opacity-70"
                 style={{
                   backgroundColor: "#686F60",
                   opacity: isLoading ? 0.5 : 1,

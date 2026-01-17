@@ -8,9 +8,7 @@
     },
     "name": "outfit-planner",
     "slug": "outfit-planner",
-    "plugins": [
-      "expo-font"
-    ],
+    "plugins": ["expo-font"],
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
