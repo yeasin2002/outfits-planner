@@ -54,7 +54,7 @@ export default function SettingsScreen() {
           <View className="flex-row gap-4 mb-5">
             <Image
               source={{ uri: "https://i.pravatar.cc/150?img=47" }}
-              className="w-[66px] h-[66px] rounded"
+              className="w-16.5 h-16.5 rounded"
             />
             <View className="flex-1 gap-3">
               <View className="gap-0.5">
@@ -83,7 +83,7 @@ export default function SettingsScreen() {
                 className="flex-row items-center gap-2 border-[0.5px] border-[#686F60] rounded-md px-2.5 py-1.5 self-start active:opacity-70"
                 style={{ backgroundColor: "#F7F5ED" }}
                 onPress={() => {
-                  // Handle edit profile
+                  router.push("/(drawer)/settings/edit-settings");
                 }}
               >
                 <Text
@@ -127,7 +127,7 @@ export default function SettingsScreen() {
                 </Text>
               </View>
 
-              <View className="w-px h-[30px] bg-[#B48B5F]" />
+              <View className="w-px h-7.5 bg-[#B48B5F]" />
             </View>
 
             <View className="flex-row items-center gap-4">
@@ -154,7 +154,7 @@ export default function SettingsScreen() {
                 </Text>
               </View>
 
-              <View className="w-px h-[30px] bg-[#B48B5F]" />
+              <View className="w-px h-7.5 bg-[#B48B5F]" />
             </View>
 
             <View className="items-center">

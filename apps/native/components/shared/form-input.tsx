@@ -9,7 +9,7 @@ const StyledView = withUniwind(View);
 interface FormInputProps<T extends FieldValues> {
   control: Control<T>;
   name: Path<T>;
-  label: string;
+  label?: string;
   placeholder?: string;
   isRequired?: boolean;
   secureTextEntry?: boolean;
@@ -17,6 +17,8 @@ interface FormInputProps<T extends FieldValues> {
   autoCapitalize?: TextInputProps["autoCapitalize"];
   className?: string;
   inputClassName?: string;
+  labelClassName?: string;
+  labelStyle?: object;
 }
 
 export function FormInput<T extends FieldValues>({
@@ -30,6 +32,8 @@ export function FormInput<T extends FieldValues>({
   autoCapitalize = "sentences",
   className,
   inputClassName = "bg-white border border-gray-300 rounded-xl px-4 py-3.5 text-base text-gray-800",
+  labelClassName,
+  labelStyle,
 }: FormInputProps<T>) {
   return (
     <Controller
@@ -37,21 +41,30 @@ export function FormInput<T extends FieldValues>({
       name={name}
       render={({ field: { onChange, onBlur, value }, fieldState: { error } }) => (
         <StyledView className={className}>
-          <Label isRequired={isRequired} isInvalid={!!error} className="mb-2">
-            <Label.Text className="text-sm text-gray-700">{label}</Label.Text>
-          </Label>
+          {label && (
+            <Label isRequired={isRequired} isInvalid={!!error}>
+              <Label.Text className={labelClassName || "text-sm text-gray-700"} style={labelStyle}>
+                {label}
+              </Label.Text>
+            </Label>
+          )}
           <TextField isInvalid={!!error}>
             <TextField.Input
               value={value as string}
               onChangeText={onChange}
               onBlur={onBlur}
               placeholder={placeholder}
-              placeholderTextColor="#9CA3AF"
+              placeholderTextColor="#828282"
               secureTextEntry={secureTextEntry}
               keyboardType={keyboardType}
               autoCapitalize={autoCapitalize}
               className={inputClassName}
-              style={{ color: "#1F2937" }}
+              style={{
+                color: "#828282",
+                fontFamily: "Lora_400Regular",
+                fontSize: 12,
+                lineHeight: 14.4,
+              }}
             />
           </TextField>
           {error && (
