@@ -37,6 +37,18 @@ function DrawerLayout() {
             ),
           }}
         />
+        <Drawer.Screen
+          name="outfits"
+          options={{
+            headerTitle: "Outfits",
+            drawerLabel: ({ color, focused }) => (
+              <Text style={{ color: focused ? color : "#686F60" }}>Outfits</Text>
+            ),
+            drawerIcon: ({ size, color, focused }) => (
+              <Ionicons name="shirt-outline" size={size} color={focused ? color : "#686F60"} />
+            ),
+          }}
+        />
       </Drawer>
       <BottomNavigation />
     </View>
