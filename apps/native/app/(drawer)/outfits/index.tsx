@@ -9,6 +9,13 @@ import { withUniwind } from "uniwind";
 
 const StyledIonicons = withUniwind(Ionicons);
 
+// Tab configuration
+const TAB_ITEMS = [
+  { value: "my", label: "My Outfits" },
+  { value: "favourite", label: "Favourite" },
+  { value: "ai", label: "Ai Pick" },
+] as const;
+
 // Sample outfit data
 const outfits = [
   {
@@ -88,48 +95,26 @@ export default function OutfitsScreen() {
       >
         <Tabs.List className="bg-transparent">
           <Tabs.Indicator className="bg-[#B48B5F] h-px" animation={false} />
-          <Tabs.Trigger value="my" className="px-1.5 py-2.5 bg-transparent">
-            {({ isSelected }) => (
-              <Tabs.Label
-                className={isSelected ? "text-black" : "text-[#686F60]"}
-                style={{
-                  fontFamily: "Lora_400Regular",
-                  fontSize: 14,
-                  lineHeight: 16.8,
-                }}
-              >
-                My Outfits
-              </Tabs.Label>
-            )}
-          </Tabs.Trigger>
-          <Tabs.Trigger value="favourite" className="px-1.5 py-2.5 bg-transparent">
-            {({ isSelected }) => (
-              <Tabs.Label
-                className={isSelected ? "text-black" : "text-[#686F60]"}
-                style={{
-                  fontFamily: "Lora_400Regular",
-                  fontSize: 14,
-                  lineHeight: 16.8,
-                }}
-              >
-                Favourite
-              </Tabs.Label>
-            )}
-          </Tabs.Trigger>
-          <Tabs.Trigger value="ai" className="px-1.5 py-2.5 bg-transparent">
-            {({ isSelected }) => (
-              <Tabs.Label
-                className={isSelected ? "text-black" : "text-[#686F60]"}
-                style={{
-                  fontFamily: "Lora_400Regular",
-                  fontSize: 14,
-                  lineHeight: 16.8,
-                }}
-              >
-                Ai Pick
-              </Tabs.Label>
-            )}
-          </Tabs.Trigger>
+          {TAB_ITEMS.map((tab) => (
+            <Tabs.Trigger
+              key={tab.value}
+              value={tab.value}
+              className="px-1.5 py-2.5 bg-transparent"
+            >
+              {({ isSelected }) => (
+                <Tabs.Label
+                  className={isSelected ? "text-black" : "text-[#686F60]"}
+                  style={{
+                    fontFamily: "Lora_400Regular",
+                    fontSize: 14,
+                    lineHeight: 16.8,
+                  }}
+                >
+                  {tab.label}
+                </Tabs.Label>
+              )}
+            </Tabs.Trigger>
+          ))}
         </Tabs.List>
       </Tabs>
 
