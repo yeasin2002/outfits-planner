@@ -11,9 +11,13 @@ const StyledIonicons = withUniwind(Ionicons);
 
 // Tab configuration
 const TAB_ITEMS = [
-  { value: "my", label: "My Outfits" },
-  { value: "favourite", label: "Favourite" },
-  { value: "ai", label: "Ai Pick" },
+  { value: "my", label: "My Outfits", route: "/(drawer)/outfits" },
+  {
+    value: "favorites",
+    label: "Favorites",
+    route: "/(drawer)/outfits/favorites",
+  },
+  { value: "ai-pick", label: "Ai Pick", route: "/(drawer)/outfits/ai-pick" },
 ] as const;
 
 // Sample outfit data
@@ -100,6 +104,7 @@ export default function OutfitsScreen() {
               key={tab.value}
               value={tab.value}
               className="px-1.5 py-2.5 bg-transparent"
+              onPress={() => router.push(tab.route as any)}
             >
               {({ isSelected }) => (
                 <Tabs.Label
