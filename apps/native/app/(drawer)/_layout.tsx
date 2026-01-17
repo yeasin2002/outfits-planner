@@ -49,6 +49,18 @@ function DrawerLayout() {
             ),
           }}
         />
+        <Drawer.Screen
+          name="settings"
+          options={{
+            headerTitle: "Settings",
+            drawerLabel: ({ color, focused }) => (
+              <Text style={{ color: focused ? color : "#686F60" }}>Settings</Text>
+            ),
+            drawerIcon: ({ size, color, focused }) => (
+              <Ionicons name="settings-outline" size={size} color={focused ? color : "#686F60"} />
+            ),
+          }}
+        />
       </Drawer>
       <BottomNavigation />
     </View>
