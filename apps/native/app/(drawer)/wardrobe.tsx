@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { Pressable, ScrollView, Text, TextInput, View } from "react-native";
 import { withUniwind } from "uniwind";
 
+import { AddItemDialog } from "@/components/add-item-dialog";
 import { CategoryFilter } from "@/components/category-filter";
 import { WardrobeItemCard } from "@/components/wardrobe-item-card";
 
@@ -97,6 +98,12 @@ const categories = ["All", "Tops", "Bottoms", "Outwear", "Shoes", "Accessories"]
 export default function Wardrobe() {
   const [activeCategory, setActiveCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
+  const [isAddDialogOpen, setIsAddDialogOpen] = useState(false);
+
+  const handleAddItem = (data: any) => {
+    console.log("New item:", data);
+    // TODO: Add item to wardrobe
+  };
 
   return (
     <View className="flex-1 bg-white">
@@ -109,9 +116,7 @@ export default function Wardrobe() {
             </Text>
             <Pressable
               className="bg-[#F7F5ED] p-2 rounded-md active:opacity-70"
-              onPress={() => {
-                // Add new item
-              }}
+              onPress={() => setIsAddDialogOpen(true)}
             >
               <StyledIonicons name="add" size={16} className="text-[#686F60]" />
             </Pressable>
@@ -175,6 +180,13 @@ export default function Wardrobe() {
         </View>
       </ScrollView>
 
+      {/* Add Item Dialog */}
+      <AddItemDialog
+        isOpen={isAddDialogOpen}
+        onOpenChange={setIsAddDialogOpen}
+        onSubmit={handleAddItem}
+      />
+
       {/* Bottom Navigation */}
       <View className="absolute bottom-0 left-0 right-0 bg-[#686F60] flex-row items-center justify-around py-4 px-6">
         <Pressable className="items-center active:opacity-70">
@@ -196,6 +208,13 @@ export default function Wardrobe() {
           <Text className="text-xs text-white opacity-70">Settings</Text>
         </Pressable>
       </View>
+
+      {/* Add Item Dialog */}
+      <AddItemDialog
+        isOpen={isAddDialogOpen}
+        onOpenChange={setIsAddDialogOpen}
+        onSubmit={handleAddItem}
+      />
     </View>
   );
 }
