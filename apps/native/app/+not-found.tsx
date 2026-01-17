@@ -15,7 +15,7 @@ export default function NotFoundScreen() {
             <Text className="text-4xl mb-3">🤔</Text>
             <Text className="text-foreground font-medium text-lg mb-1">Page Not Found</Text>
             <Text className="text-muted text-sm text-center mb-4">
-              The page you're looking for doesn't exist.
+              The page {`you're`} looking for {`doesn't`} exist.
             </Text>
             <Link href="/" asChild>
               <Button size="sm">Go Home</Button>

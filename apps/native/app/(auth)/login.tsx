@@ -132,7 +132,7 @@ export default function LoginScreen() {
 
         {/* Sign Up Link */}
         <StyledView className="flex-row items-center justify-center">
-          <StyledText className="text-gray-800 text-sm">Don't have an account? </StyledText>
+          <StyledText className="text-gray-800 text-sm">{`Don't`} have an account? </StyledText>
           <StyledPressable
             onPress={() => router.push("/(auth)/signup")}
             className="active:opacity-70"

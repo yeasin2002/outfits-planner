@@ -103,7 +103,9 @@ export default function VerifyOTPScreen() {
 
         {/* Resend Code Link */}
         <StyledView className="items-center mb-8">
-          <StyledText className="text-gray-600 text-sm mb-2">Didn't receive the code?</StyledText>
+          <StyledText className="text-gray-600 text-sm mb-2">
+            {`Didn't`} receive the code?
+          </StyledText>
           <StyledPressable onPress={handleResendCode} className="active:opacity-70">
             <StyledText className="text-[#4A9EFF] text-sm font-medium">Resend Code</StyledText>
           </StyledPressable>

@@ -10,7 +10,9 @@
     "ios": "expo run:ios",
     "prebuild": "expo prebuild --clean",
     "web": "expo start --web",
-    "sitemap": "npx expo-router-sitemap"
+    "sitemap": "npx expo-router-sitemap",
+    "lint": "expo lint",
+    "lint:fix": "expo lint --fix"
   },
   "dependencies": {
     "@better-auth/expo": "catalog:",

@@ -35,7 +35,7 @@ export default function Home() {
             <View className="flex-row items-center gap-2 mb-3">
               <StyledIonicons name="sparkles" size={20} style={{ color: "#D4A574" }} />
               <Text className="text-lg font-semibold" style={{ color: "#686F60" }}>
-                Today's Pick
+                {`Today's`} Pick
               </Text>
             </View>
             <Text className="text-sm leading-5" style={{ color: "#8B8B8B" }}>
@@ -121,7 +121,7 @@ export default function Home() {
             <Pressable className="flex-1 bg-[#D4E5D4] rounded-2xl p-4 active:opacity-70">
               <StyledIonicons name="sparkles-outline" size={28} style={{ color: "#8B9B8B" }} />
               <Text className="text-lg font-semibold mt-3 mb-1" style={{ color: "#686F60" }}>
-                Today's Pick
+                {`Today's`} Pick
               </Text>
               <Text className="text-sm" style={{ color: "#8B9B8B" }}>
                 Expand your wardrobe
