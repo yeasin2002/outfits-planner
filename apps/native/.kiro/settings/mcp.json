@@ -4,6 +4,10 @@
       "type": "http",
       "url": "https://mcp.figma.com/mcp",
       "autoApprove": ["get_design_context", "get_screenshot"]
+    },
+    "heroui-native": {
+      "command": "pnpm",
+      "args": ["dlx", "@heroui/native-mcp@latest"]
     }
   },
   "powers": {
