@@ -118,7 +118,7 @@ export default function Wardrobe() {
               className="bg-[#F7F5ED] p-2 rounded-md active:opacity-70"
               onPress={() => setIsAddDialogOpen(true)}
             >
-              <StyledIonicons name="add" size={16} className="text-[#686F60]" />
+              <StyledIonicons name="add" size={16} className="text-main-primary" />
             </Pressable>
           </View>
         </View>

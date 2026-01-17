@@ -43,7 +43,7 @@ export default function OutfitsScreen() {
         style={{ paddingTop: insets.top + 12 }}
       >
         <Text
-          className="text-[#686F60] text-[16px]"
+          className="text-main-primary text-[16px]"
           style={{ fontFamily: "Caudex_700Bold", lineHeight: 19.2 }}
         >
           Outfits
@@ -54,7 +54,7 @@ export default function OutfitsScreen() {
             // Handle add outfit
           }}
         >
-          <StyledIonicons name="add" size={16} className="text-[#686F60]" />
+          <StyledIonicons name="add" size={16} className="text-main-primary" />
         </Pressable>
       </View>
 
@@ -77,7 +77,7 @@ export default function OutfitsScreen() {
             >
               {({ isSelected }) => (
                 <Tabs.Label
-                  className={isSelected ? "text-black" : "text-[#686F60]"}
+                  className={isSelected ? "text-black" : "text-main-primary"}
                   style={{
                     fontFamily: "Lora_400Regular",
                     fontSize: 14,
@@ -125,7 +125,7 @@ export default function OutfitsScreen() {
           }}
         >
           <View className="bg-[#F7F5ED] w-10 h-10 rounded-full items-center justify-center mb-2">
-            <StyledIonicons name="add" size={20} className="text-[#686F60]" />
+            <StyledIonicons name="add" size={20} className="text-main-primary" />
           </View>
           <Text
             className="text-[#828282] text-[12px] mb-1"

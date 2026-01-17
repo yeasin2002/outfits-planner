@@ -97,7 +97,7 @@ export default function SettingsScreen() {
                 >
                   Edit Profile
                 </Text>
-                <StyledIonicons name="create-outline" size={16} className="text-[#686F60]" />
+                <StyledIonicons name="create-outline" size={16} className="text-main-primary" />
               </Pressable>
             </View>
           </View>
@@ -228,7 +228,7 @@ export default function SettingsScreen() {
         {/* Style Preference */}
         <View className="mx-6 mb-5">
           <View className="flex-row items-center gap-1.5 mb-5">
-            <StyledIonicons name="shirt-outline" size={20} className="text-[#686F60]" />
+            <StyledIonicons name="shirt-outline" size={20} className="text-main-primary" />
             <Text
               className="text-[16px]"
               style={{
@@ -308,7 +308,7 @@ export default function SettingsScreen() {
                 <StyledIonicons
                   name="shield-checkmark-outline"
                   size={16}
-                  className="text-[#686F60]"
+                  className="text-main-primary"
                 />
                 <Text
                   className="text-[14px]"
@@ -321,7 +321,7 @@ export default function SettingsScreen() {
                   Privacy & Security
                 </Text>
               </View>
-              <StyledIonicons name="chevron-forward" size={16} className="text-[#686F60]" />
+              <StyledIonicons name="chevron-forward" size={16} className="text-main-primary" />
             </Pressable>
 
             {/* Change Password */}
@@ -332,7 +332,7 @@ export default function SettingsScreen() {
               }}
             >
               <View className="flex-row items-center gap-1.5">
-                <StyledIonicons name="key-outline" size={16} className="text-[#686F60]" />
+                <StyledIonicons name="key-outline" size={16} className="text-main-primary" />
                 <Text
                   className="text-[14px]"
                   style={{
@@ -344,13 +344,13 @@ export default function SettingsScreen() {
                   Change Password
                 </Text>
               </View>
-              <StyledIonicons name="chevron-forward" size={16} className="text-[#686F60]" />
+              <StyledIonicons name="chevron-forward" size={16} className="text-main-primary" />
             </Pressable>
 
             {/* Location & Services */}
             <View className="flex-row items-center justify-between px-3 py-1.5">
               <View className="flex-row items-center gap-1.5">
-                <StyledIonicons name="location-outline" size={16} className="text-[#686F60]" />
+                <StyledIonicons name="location-outline" size={16} className="text-main-primary" />
                 <Text
                   className="text-[14px]"
                   style={{
@@ -399,7 +399,11 @@ export default function SettingsScreen() {
               }}
             >
               <View className="flex-row items-center gap-1.5">
-                <StyledIonicons name="help-circle-outline" size={16} className="text-[#686F60]" />
+                <StyledIonicons
+                  name="help-circle-outline"
+                  size={16}
+                  className="text-main-primary"
+                />
                 <Text
                   className="text-[14px]"
                   style={{
@@ -411,7 +415,7 @@ export default function SettingsScreen() {
                   Help & Support
                 </Text>
               </View>
-              <StyledIonicons name="chevron-forward" size={16} className="text-[#686F60]" />
+              <StyledIonicons name="chevron-forward" size={16} className="text-main-primary" />
             </Pressable>
 
             {/* Delete Account */}
@@ -434,7 +438,7 @@ export default function SettingsScreen() {
                   Delete Account
                 </Text>
               </View>
-              <StyledIonicons name="chevron-forward" size={16} className="text-[#686F60]" />
+              <StyledIonicons name="chevron-forward" size={16} className="text-main-primary" />
             </Pressable>
           </View>
 

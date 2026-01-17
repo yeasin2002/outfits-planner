@@ -53,7 +53,7 @@ export default function EditSettings() {
 
             {/* Title */}
             <StyledText
-              className="text-[#686F60]"
+              className="text-main-primary"
               style={{
                 fontFamily: "Caudex_700Bold",
                 fontSize: 16,
@@ -66,7 +66,7 @@ export default function EditSettings() {
 
           {/* Check Icon */}
           <StyledPressable onPress={handleSubmit(onSubmit)} className="active:opacity-70">
-            <StyledIonicons name="checkmark" size={20} className="text-[#686F60]" />
+            <StyledIonicons name="checkmark" size={20} className="text-main-primary" />
           </StyledPressable>
         </StyledView>
       </StyledView>

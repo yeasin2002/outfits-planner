@@ -134,7 +134,7 @@ style={{ fontFamily: "Lora_400Regular", fontSize: 10, lineHeight: 12 }}
     <Tabs.Indicator className="bg-[#B48B5F] h-px" animation={false} />
     <Tabs.Trigger value="tab1" className="px-1.5 py-2.5 bg-transparent">
       {({ isSelected }) => (
-        <Tabs.Label className={isSelected ? "text-black" : "text-[#686F60]"}>
+        <Tabs.Label className={isSelected ? "text-black" : "text-main-primary"}>
           Tab 1
         </Tabs.Label>
       )}
@@ -414,7 +414,7 @@ Match Figma tab designs with HeroUI Tabs:
       >
         {({ isSelected }) => (
           <Tabs.Label
-            className={isSelected ? "text-black" : "text-[#686F60]"}
+            className={isSelected ? "text-black" : "text-main-primary"}
             style={{ fontFamily: "Lora_400Regular", fontSize: 14, lineHeight: 16.8 }}
           >
             {tab.label}

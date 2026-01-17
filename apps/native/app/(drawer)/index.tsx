@@ -21,7 +21,7 @@ export default function Home() {
               </Text>
             </View>
             <View className="flex-row items-center gap-1 bg-[#F5F5F5] px-3 py-2 rounded-full">
-              <StyledIonicons name="cloud-outline" size={16} className="text-[#686F60]" />
+              <StyledIonicons name="cloud-outline" size={16} className="text-main-primary" />
               <Text className="text-sm" style={{ color: "#686F60" }}>
                 20°C
               </Text>

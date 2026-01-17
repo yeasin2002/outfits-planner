@@ -114,7 +114,7 @@ export function AddItemDialog({ isOpen, onOpenChange, onSubmit }: AddItemDialogP
               className="bg-white p-2 rounded-full shadow-sm active:opacity-70"
               onPress={handleCancel}
             >
-              <StyledIonicons name="arrow-back" size={18} className="text-[#686F60]" />
+              <StyledIonicons name="arrow-back" size={18} className="text-main-primary" />
             </Pressable>
             <Dialog.Title className="text-[16px] font-bold" style={{ color: "#686F60" }}>
               Add Item

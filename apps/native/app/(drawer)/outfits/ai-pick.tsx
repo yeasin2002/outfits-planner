@@ -53,7 +53,7 @@ export default function OutfitBuilderScreen() {
           <StyledIonicons name="chevron-back" size={18} className="text-black" />
         </Pressable>
         <Text
-          className="text-[#686F60] text-[16px]"
+          className="text-main-primary text-[16px]"
           style={{ fontFamily: "Caudex_700Bold", lineHeight: 19.2 }}
         >
           Outfit Builder
