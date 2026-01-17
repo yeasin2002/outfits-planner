@@ -2,7 +2,6 @@ import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import React, { useState } from "react";
 import { Image, Pressable, ScrollView, Switch, Text, View } from "react-native";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { withUniwind } from "uniwind";
 
 const StyledIonicons = withUniwind(Ionicons);
@@ -18,7 +17,6 @@ const STYLE_PREFERENCES = [
 ];
 
 export default function SettingsScreen() {
-  const insets = useSafeAreaInsets();
   const [locationEnabled, setLocationEnabled] = useState(true);
   const [stylePreferences, setStylePreferences] = useState(STYLE_PREFERENCES);
   const router = useRouter();
@@ -37,10 +35,14 @@ export default function SettingsScreen() {
         showsVerticalScrollIndicator={false}
       >
         {/* Header */}
-        <View className="px-6" style={{ paddingTop: insets.top + 12, paddingBottom: 12 }}>
+        <View className="px-6 pt-4 pb-8">
           <Text
-            className="text-[#686F60] text-[16px]"
-            style={{ fontFamily: "Caudex_700Bold", lineHeight: 19.2 }}
+            className="text-[16px]"
+            style={{
+              color: "#686F60",
+              fontFamily: "Caudex_700Bold",
+              lineHeight: 19.2,
+            }}
           >
             Settings
           </Text>
@@ -57,27 +59,40 @@ export default function SettingsScreen() {
             <View className="flex-1 gap-3">
               <View className="gap-0.5">
                 <Text
-                  className="text-[#686F60] text-[16px]"
-                  style={{ fontFamily: "Caudex_700Bold", lineHeight: 19.2 }}
+                  className="text-[16px]"
+                  style={{
+                    color: "#686F60",
+                    fontFamily: "Caudex_700Bold",
+                    lineHeight: 19.2,
+                  }}
                 >
                   Hafsa Binte Kalam
                 </Text>
                 <Text
-                  className="text-[#B48B5F] text-[10px]"
-                  style={{ fontFamily: "Lora_400Regular", lineHeight: 12 }}
+                  className="text-[10px]"
+                  style={{
+                    color: "#B48B5F",
+                    fontFamily: "Lora_400Regular",
+                    lineHeight: 12,
+                  }}
                 >
                   hello.hafsabinte@gmail.com
                 </Text>
               </View>
               <Pressable
-                className="flex-row items-center gap-2 border border-[#686F60] rounded-md px-2.5 py-1.5 self-start active:opacity-70"
+                className="flex-row items-center gap-2 border-[0.5px] border-[#686F60] rounded-md px-2.5 py-1.5 self-start active:opacity-70"
+                style={{ backgroundColor: "#F7F5ED" }}
                 onPress={() => {
                   // Handle edit profile
                 }}
               >
                 <Text
-                  className="text-[#686F60] text-[10px]"
-                  style={{ fontFamily: "Lora_400Regular", lineHeight: 12 }}
+                  className="text-[10px]"
+                  style={{
+                    color: "#686F60",
+                    fontFamily: "Lora_400Regular",
+                    lineHeight: 12,
+                  }}
                 >
                   Edit Profile
                 </Text>
@@ -88,50 +103,78 @@ export default function SettingsScreen() {
 
           {/* Stats */}
           <View className="flex-row items-center justify-center gap-4">
-            <View className="items-center">
-              <Text
-                className="text-black text-[20px]"
-                style={{ fontFamily: "Caudex_700Bold", lineHeight: 24 }}
-              >
-                24
-              </Text>
-              <Text
-                className="text-[#B48B5F] text-[12px]"
-                style={{ fontFamily: "Lora_400Regular", lineHeight: 14.4 }}
-              >
-                Items
-              </Text>
+            <View className="flex-row items-center gap-4">
+              <View className="items-center">
+                <Text
+                  className="text-[20px]"
+                  style={{
+                    color: "#000000",
+                    fontFamily: "Caudex_700Bold",
+                    lineHeight: 24,
+                  }}
+                >
+                  24
+                </Text>
+                <Text
+                  className="text-[12px]"
+                  style={{
+                    color: "#B48B5F",
+                    fontFamily: "Lora_400Regular",
+                    lineHeight: 14.4,
+                  }}
+                >
+                  Items
+                </Text>
+              </View>
+
+              <View className="w-px h-[30px] bg-[#B48B5F]" />
             </View>
 
-            <View className="w-px h-[30px] bg-[#B48B5F]" />
+            <View className="flex-row items-center gap-4">
+              <View className="items-center">
+                <Text
+                  className="text-[20px]"
+                  style={{
+                    color: "#000000",
+                    fontFamily: "Caudex_700Bold",
+                    lineHeight: 24,
+                  }}
+                >
+                  10
+                </Text>
+                <Text
+                  className="text-[12px]"
+                  style={{
+                    color: "#B48B5F",
+                    fontFamily: "Lora_400Regular",
+                    lineHeight: 14.4,
+                  }}
+                >
+                  Outfits
+                </Text>
+              </View>
 
-            <View className="items-center">
-              <Text
-                className="text-black text-[20px]"
-                style={{ fontFamily: "Caudex_700Bold", lineHeight: 24 }}
-              >
-                10
-              </Text>
-              <Text
-                className="text-[#B48B5F] text-[12px]"
-                style={{ fontFamily: "Lora_400Regular", lineHeight: 14.4 }}
-              >
-                Outfits
-              </Text>
+              <View className="w-px h-[30px] bg-[#B48B5F]" />
             </View>
 
-            <View className="w-px h-[30px] bg-[#B48B5F]" />
-
             <View className="items-center">
               <Text
-                className="text-black text-[20px]"
-                style={{ fontFamily: "Caudex_700Bold", lineHeight: 24 }}
+                className="text-[20px]"
+                style={{
+                  color: "#000000",
+                  fontFamily: "Caudex_700Bold",
+                  lineHeight: 24,
+                }}
               >
                 02
               </Text>
               <Text
-                className="text-[#B48B5F] text-[12px]"
-                style={{ fontFamily: "Lora_400Regular", lineHeight: 14.4 }}
+                className="text-[12px]"
+                style={{
+                  color: "#B48B5F",
+                  fontFamily: "Lora_400Regular",
+                  lineHeight: 14.4,
+                }}
               >
                 Outfits
               </Text>
@@ -142,17 +185,25 @@ export default function SettingsScreen() {
         {/* Premium Card */}
         <View className="mx-6 mb-5 bg-[#FFECD3] border border-[#686F60] rounded-md p-4">
           <View className="flex-row items-start gap-2 mb-2">
-            <StyledIonicons name={"crown-outline" as any} size={27} className="text-[#686F60]" />
+            <Text className="text-[27px]">👑</Text>
             <View className="flex-1">
               <Text
-                className="text-[#212121] text-[20px] mb-1"
-                style={{ fontFamily: "Lora_500Medium", lineHeight: 24 }}
+                className="text-[20px] mb-1"
+                style={{
+                  color: "#212121",
+                  fontFamily: "Lora_500Medium",
+                  lineHeight: 24,
+                }}
               >
                 Free Plan
               </Text>
               <Text
-                className="text-[#4D4D4D] text-[10px]"
-                style={{ fontFamily: "Lora_400Regular", lineHeight: 12 }}
+                className="text-[10px]"
+                style={{
+                  color: "#4D4D4D",
+                  fontFamily: "Lora_400Regular",
+                  lineHeight: 12,
+                }}
               >
                 Upgrade premium to unlock all features.
               </Text>
@@ -161,7 +212,7 @@ export default function SettingsScreen() {
           <Pressable
             className="bg-[#686F60] rounded-full py-2 items-center active:opacity-80"
             onPress={() => {
-              router.push("/settings/premium");
+              router.push("/(drawer)/settings/premium");
             }}
           >
             <Text
@@ -178,8 +229,12 @@ export default function SettingsScreen() {
           <View className="flex-row items-center gap-1.5 mb-5">
             <StyledIonicons name="shirt-outline" size={20} className="text-[#686F60]" />
             <Text
-              className="text-[#686F60] text-[16px]"
-              style={{ fontFamily: "Caudex_700Bold", lineHeight: 19.2 }}
+              className="text-[16px]"
+              style={{
+                color: "#686F60",
+                fontFamily: "Caudex_700Bold",
+                lineHeight: 19.2,
+              }}
             >
               Style Preference
             </Text>
@@ -230,8 +285,12 @@ export default function SettingsScreen() {
         {/* Account Section */}
         <View className="mx-6">
           <Text
-            className="text-[#686F60] text-[16px] mb-5"
-            style={{ fontFamily: "Caudex_700Bold", lineHeight: 19.2 }}
+            className="text-[16px] mb-5"
+            style={{
+              color: "#686F60",
+              fontFamily: "Caudex_700Bold",
+              lineHeight: 19.2,
+            }}
           >
             Account
           </Text>
@@ -251,8 +310,12 @@ export default function SettingsScreen() {
                   className="text-[#686F60]"
                 />
                 <Text
-                  className="text-black text-[14px]"
-                  style={{ fontFamily: "Lora_400Regular", lineHeight: 16.8 }}
+                  className="text-[14px]"
+                  style={{
+                    color: "#000000",
+                    fontFamily: "Lora_400Regular",
+                    lineHeight: 16.8,
+                  }}
                 >
                   Privacy & Security
                 </Text>
@@ -270,8 +333,12 @@ export default function SettingsScreen() {
               <View className="flex-row items-center gap-1.5">
                 <StyledIonicons name="key-outline" size={16} className="text-[#686F60]" />
                 <Text
-                  className="text-black text-[14px]"
-                  style={{ fontFamily: "Lora_400Regular", lineHeight: 16.8 }}
+                  className="text-[14px]"
+                  style={{
+                    color: "#000000",
+                    fontFamily: "Lora_400Regular",
+                    lineHeight: 16.8,
+                  }}
                 >
                   Change Password
                 </Text>
@@ -284,8 +351,12 @@ export default function SettingsScreen() {
               <View className="flex-row items-center gap-1.5">
                 <StyledIonicons name="location-outline" size={16} className="text-[#686F60]" />
                 <Text
-                  className="text-black text-[14px]"
-                  style={{ fontFamily: "Lora_400Regular", lineHeight: 16.8 }}
+                  className="text-[14px]"
+                  style={{
+                    color: "#000000",
+                    fontFamily: "Lora_400Regular",
+                    lineHeight: 16.8,
+                  }}
                 >
                   Location & Services
                 </Text>
@@ -308,8 +379,12 @@ export default function SettingsScreen() {
               <View className="flex-row items-center gap-1.5">
                 <StyledIonicons name="help-circle-outline" size={16} className="text-[#686F60]" />
                 <Text
-                  className="text-black text-[14px]"
-                  style={{ fontFamily: "Lora_400Regular", lineHeight: 16.8 }}
+                  className="text-[14px]"
+                  style={{
+                    color: "#000000",
+                    fontFamily: "Lora_400Regular",
+                    lineHeight: 16.8,
+                  }}
                 >
                   Help & Support
                 </Text>
@@ -327,8 +402,12 @@ export default function SettingsScreen() {
               <View className="flex-row items-center gap-1.5">
                 <StyledIonicons name="trash-outline" size={16} className="text-[#EE9250]" />
                 <Text
-                  className="text-[#EE9250] text-[14px]"
-                  style={{ fontFamily: "Lora_400Regular", lineHeight: 16.8 }}
+                  className="text-[14px]"
+                  style={{
+                    color: "#EE9250",
+                    fontFamily: "Lora_400Regular",
+                    lineHeight: 16.8,
+                  }}
                 >
                   Delete Account
                 </Text>
