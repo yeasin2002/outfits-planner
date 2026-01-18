@@ -1,14 +1,11 @@
 import { OutfitCard } from "@/components/outfit-card";
+import { StyledIonicons } from "@/components/ui/styled";
 import { outfits } from "@/data";
-import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import { Tabs } from "heroui-native";
 import React, { useState } from "react";
 import { Pressable, ScrollView, Text, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { withUniwind } from "uniwind";
-
-const StyledIonicons = withUniwind(Ionicons);
 
 // Tab configuration
 const TAB_ITEMS = [

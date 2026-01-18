@@ -5,8 +5,8 @@ import Animated, { FadeOut, ZoomIn } from "react-native-reanimated";
 import { withUniwind } from "uniwind";
 
 import { useAppTheme } from "@/contexts/app-theme-context";
-
-const StyledIonicons = withUniwind(Ionicons);
+import React from "react";
+import { StyledIonicons } from "./ui/styled";
 
 export function ThemeToggle() {
   const { toggleTheme, isLight } = useAppTheme();

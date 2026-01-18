@@ -3,7 +3,8 @@
     "figma": {
       "type": "http",
       "url": "https://mcp.figma.com/mcp",
-      "autoApprove": ["get_design_context", "get_screenshot"]
+      "autoApprove": ["get_design_context", "get_screenshot"],
+      "disabled": true
     },
     "heroui-native": {
       "command": "pnpm",
@@ -14,8 +15,8 @@
     "mcpServers": {},
     "power-figma-figma": {
       "url": "https://mcp.figma.com/mcp",
-      "disabled": false,
-      "disabledTools": []
+      "autoApprove": ["get_design_context", "get_screenshot"],
+      "disabled": false
     }
   }
 }

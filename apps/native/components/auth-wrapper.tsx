@@ -2,8 +2,7 @@ import React, { type PropsWithChildren } from "react";
 import { View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { withUniwind } from "uniwind";
-
-const StyledView = withUniwind(View);
+import { StyledView } from "./ui/styled";
 
 export function AuthWrapper({ children }: PropsWithChildren) {
   const insets = useSafeAreaInsets();
