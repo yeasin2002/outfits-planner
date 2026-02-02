@@ -1,11 +1,8 @@
-import { Ionicons } from "@expo/vector-icons";
+import { StyledIonicons } from "@/components/ui/styled";
 import { useRouter } from "expo-router";
 import { Switch } from "heroui-native";
 import React, { useState } from "react";
 import { Image, Pressable, ScrollView, Text, View } from "react-native";
-import { withUniwind } from "uniwind";
-
-const StyledIonicons = withUniwind(Ionicons);
 
 // Style preferences data
 const STYLE_PREFERENCES = [

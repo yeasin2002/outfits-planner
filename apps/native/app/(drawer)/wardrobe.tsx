@@ -1,13 +1,10 @@
-import { Ionicons } from "@expo/vector-icons";
 import React, { useState } from "react";
 import { Pressable, ScrollView, Text, TextInput, View } from "react-native";
-import { withUniwind } from "uniwind";
 
 import { AddItemDialog } from "@/components/add-item-dialog";
 import { CategoryFilter } from "@/components/category-filter";
+import { StyledIonicons } from "@/components/ui/styled";
 import { WardrobeItemCard } from "@/components/wardrobe-item-card";
-
-const StyledIonicons = withUniwind(Ionicons);
 
 // Sample wardrobe data
 const wardrobeItems = [

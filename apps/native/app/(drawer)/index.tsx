@@ -1,9 +1,8 @@
+import { StyledIonicons } from "@/components/ui/styled";
 import { Ionicons } from "@expo/vector-icons";
 import React from "react";
 import { Image, Pressable, ScrollView, Text, View } from "react-native";
 import { withUniwind } from "uniwind";
-
-const StyledIonicons = withUniwind(Ionicons);
 
 export default function Home() {
   return (

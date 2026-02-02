@@ -1,10 +1,8 @@
-import { ErrorView, Label, TextField } from "heroui-native";
+import { ErrorView, Label, TextField, cn } from "heroui-native";
 import React from "react";
 import { Control, Controller, FieldValues, Path } from "react-hook-form";
-import { TextInputProps, View } from "react-native";
-import { withUniwind } from "uniwind";
-
-const StyledView = withUniwind(View);
+import { TextInputProps } from "react-native";
+import { StyledView } from "../ui/styled";
 
 interface FormInputProps<T extends FieldValues> {
   control: Control<T>;
@@ -43,7 +41,7 @@ export function FormInput<T extends FieldValues>({
         <StyledView className={className}>
           {label && (
             <Label isRequired={isRequired} isInvalid={!!error}>
-              <Label.Text className={labelClassName || "text-sm text-gray-700"} style={labelStyle}>
+              <Label.Text className={cn("text-sm text-gray-700", labelClassName)}>
                 {label}
               </Label.Text>
             </Label>

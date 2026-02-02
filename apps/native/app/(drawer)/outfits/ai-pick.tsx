@@ -1,12 +1,8 @@
-import { Ionicons, MaterialIcons } from "@expo/vector-icons";
+import { StyledIonicons, StyledMaterialIcons } from "@/components/ui/styled";
 import { useRouter } from "expo-router";
 import React, { useState } from "react";
 import { Image, Pressable, ScrollView, Text, TextInput, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { withUniwind } from "uniwind";
-
-const StyledIonicons = withUniwind(Ionicons);
-const StyledMaterialIcons = withUniwind(MaterialIcons);
 
 // Category filter items
 const CATEGORIES = [
@@ -19,9 +15,18 @@ const CATEGORIES = [
 
 // Sample wardrobe items for display
 const SAMPLE_ITEMS = [
-  { id: 1, image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400" },
-  { id: 2, image: "https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=400" },
-  { id: 3, image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400" },
+  {
+    id: 1,
+    image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400",
+  },
+  {
+    id: 2,
+    image: "https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=400",
+  },
+  {
+    id: 3,
+    image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400",
+  },
 ];
 
 export default function OutfitBuilderScreen() {

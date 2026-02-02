@@ -1,11 +1,8 @@
-import { Ionicons } from "@expo/vector-icons";
+import { StyledIonicons } from "@/components/ui/styled";
 import { router } from "expo-router";
 import { Button } from "heroui-native";
 import React, { useState } from "react";
 import { Pressable, ScrollView, Text, View } from "react-native";
-import { withUniwind } from "uniwind";
-
-const StyledIonicons = withUniwind(Ionicons);
 
 type PlanType = "monthly" | "yearly";
 

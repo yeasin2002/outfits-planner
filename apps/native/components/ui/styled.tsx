@@ -5,6 +5,5 @@ import { withUniwind } from "uniwind";
 export const StyledView = withUniwind(View);
 export const StyledText = withUniwind(Text);
 export const StyledPressable = withUniwind(Pressable);
-
 export const StyledIonicons = withUniwind(Ionicons);
 export const StyledMaterialIcons = withUniwind(MaterialIcons);
