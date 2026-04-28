@@ -2,6 +2,8 @@
 
 A cross-platform outfit planning application built with [Better-T-Stack](https://github.com/AmanVarshney01/create-better-t-stack).
 
+Figma: https://www.figma.com/design/UTL1LKGNRVGIDXgDgWELxL/Digital-Wardrobe---Outfit-Planner?node-id=0-1&p=f&t=nhntDg5f3EWbBINi-0 
+
 ## Features
 
 - **TypeScript** - Type safety throughout
